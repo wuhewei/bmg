@@ -379,7 +379,7 @@ td {
     min-height: 120px;
     padding: 6px 0 12px;
     margin-bottom: 30px;
-    border-bottom: 1px solid #e0e0e0;
+    /*border-bottom: 1px solid #e0e0e0;*/
 }
 
 .order-view-box .uc-order-item .order-detail-info h3 {

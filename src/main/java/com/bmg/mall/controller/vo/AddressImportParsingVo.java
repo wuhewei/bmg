@@ -1,9 +1,12 @@
 package com.bmg.mall.controller.vo;
 
+import lombok.Data;
+
 /**
  * @author hewei
  * @date 2021/3/4
  */
+@Data
 public class AddressImportParsingVo {
 
     /**
