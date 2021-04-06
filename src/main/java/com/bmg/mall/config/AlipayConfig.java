@@ -27,10 +27,10 @@ public class AlipayConfig {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjraRxxJGJ/nih2dIx0vJYNigwCbfmD66msunv+BD+4+pyyxPF39PhIutTJpsCRLcZ1nhD8guJFFyD7lM0AVeXc+C1t+l8Q5zMavFNK5W/pIfVppH/7FWR6opjcdQGUSxtGLGKaTcVNpIIxO3pKaOnRhZ2Km1FgVzGCQGjISApDPS29nsq5UR1DXOI9ZBBHBDg1sZU0/DV7fixEgUWWA+Y3ZSG+JojD3i4IerouzgQ4WMSQ3E9XifNziGYUHrEtbH5R3K+Z7sqx7xXLyXQaw3LiMO7zNMlvZf5zg0vd0pdD8WaZKM3tRiO6vYf1b9Pmi9B2K8144lf2GuGpWPmc/kXQIDAQAB";
 
 	// 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String notify_url = "http://localhost:8085/ispay";
+	public static String notify_url = "http://8.129.132.63:18085/ispay";
 
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String return_url = "http://localhost:8085/ispay";
+	public static String return_url = "http://8.129.132.63:18085/ispay";
 
 	// 签名方式
 	public static String sign_type = "RSA2";
@@ -43,7 +43,7 @@ public class AlipayConfig {
     public static String gatewayUrl = "https://openapi.alipaydev.com/gateway.do";
 	
 	// 支付宝网关
-	public static String log_path = "C:\\";
+	public static String log_path = "/root/workspance";
 
 //↑↑↑↑↑↑↑↑↑↑请在这里配置您的基本信息↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 

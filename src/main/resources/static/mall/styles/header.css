@@ -56,7 +56,7 @@
 
 #header .center .fr .user:hover .selector {
     padding: 7px 0;
-    height: 120px;
+    height: 80px;
 }
 
 #header .center .fr .user .username {
@@ -137,7 +137,7 @@
 
 #nav {
     width: 100%;
-    height: 100px;
+    height: 300px;
     flex-shrink: 0;
     position: relative;
 }
@@ -160,6 +160,26 @@
     background-size: 100%;
     background-position: center;
     margin-top: 0px;
+}
+
+/*#nav .banner_x .banner {*/
+/*    width: 100%;*/
+/*    height: 300px;*/
+/*    !*text-indent: -10000px;*!*/
+/*    !*background: url(../image/sub_banner/banner.jpg) no-repeat;*!*/
+/*    !*background-size: 100%;*!*/
+/*    !*background-position: center;*!*/
+/*    !*margin-top: 0px;*!*/
+/*}*/
+
+#nav .banner_x .banner img{
+    width: 100%;
+    height: 100%;
+    /*text-indent: -10000px;*/
+    /*background: url(../image/sub_banner/banner.jpg) no-repeat;*/
+    /*background-size: 100%;*/
+    /*background-position: center;*/
+    /*margin-top: 0px;*/
 }
 
 #nav .banner_x .icon-search {

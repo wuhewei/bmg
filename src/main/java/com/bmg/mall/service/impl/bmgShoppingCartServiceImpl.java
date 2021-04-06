@@ -87,6 +87,11 @@ public class bmgShoppingCartServiceImpl implements bmgShoppingCartService {
     }
 
     @Override
+    public Boolean deleteAllByUserId(Long userId) {
+        return BmgShoppingCartItemMapper.deleteAllByUserId(userId) > 0;
+    }
+
+    @Override
     public List<bmgShoppingCartItemVO> getMyShoppingCartItems(Long BmgUserId) {
         List<bmgShoppingCartItemVO> BmgShoppingCartItemVOS = new ArrayList<>();
         List<bmgShoppingCartItem> BmgShoppingCartItems = BmgShoppingCartItemMapper.selectByUserId(BmgUserId, Constants.SHOPPING_CART_ITEM_TOTAL_NUMBER);

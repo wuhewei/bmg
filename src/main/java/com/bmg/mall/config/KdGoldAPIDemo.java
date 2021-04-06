@@ -225,7 +225,7 @@ public class KdGoldAPIDemo {
 		String regex="(?<province>[^省]+自治区|.*?省|.*?行政区|.*?市)(?<city>[^市]+自治州|.*?地区|.*?行政单位|.+盟|市辖区|.*?市|.*?县)(?<county>[^县]+县|.+区|.+市|.+旗|.+海域|.+岛)?(?<town>[^区]+区|.+镇)?(?<village>.*)";
 		Matcher m= Pattern.compile(regex).matcher(address);
 		String province=null,city=null,county=null,town=null,village=null;
-		Map<String,String> row=null;
+		Map<String,String> row=new HashMap<>();
 		while(m.find()){
 			row=new LinkedHashMap<String,String>();
 			province=m.group("province");

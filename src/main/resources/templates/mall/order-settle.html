@@ -97,23 +97,26 @@
                                             <option value="YZ">邮政快递</option>
                                         </select>
                                     </tr>
-                                    <tr>
-                                        <div class="table-box">
-                                            <div id="toolbar">
-                                                <div class="pull-left">
-                                                    <button id="importAddress" class="btn btn-default">导入</button>
-                                                    <button id="addAddress" class="btn btn-default">添加</button>
-                                                    <button id="delAddress" class="btn btn-default">删除</button>
-                                                </div>
-                                                <div class="pull-right">
-                                                    <button id="saveButton" class="btn btn-default">校验</button>
-                                                </div>
-                                            </div>
-                                            <table id="table"></table>
-                                        </div>
-                                    </tr>
                                     </tbody>
                                 </table>
+                                <div class="table-box">
+                                    <div id="toolbar">
+                                        <div style="display: inline-block; text-align: left">
+                                            <button id="importAddress" class="btn btn-default">导入</button>
+                                            <button id="addAddress" class="btn btn-default">添加</button>
+                                            <button id="delAddress" class="btn btn-default">删除</button>
+                                        </div>
+                                        <div style="display: inline-block; text-align: right">
+                                            <button id="saveButton" class="btn btn-default">校验</button>
+                                        </div>
+                                    </div>
+                                    <table id="table"></table>
+                                </div>
+<!--                                <div id="addressTemplate" style="margin-top: 20px;">-->
+<!--                                    <h3>收货模板</h3>-->
+<!--                                    <p>张三,15722223333,广东省广州市花都区白云街1号</p>-->
+<!--                                    <p>李四,15744445555,广东省东莞市上朗区西湖街2号</p>-->
+<!--                                </div>-->
                             </div>
                             <div id="editTime" class="order-detail-info">
                                 <h3>支付方式</h3>
@@ -133,7 +136,9 @@
                                     <tbody>
                                     <tr>
                                         <th>商品总价：</th>
-                                        <td><span class="num" th:text="${priceTotal+'.00'}">1299.00</span><span th:name="ordercount" id="ordercount"></span>元</td>
+                                        <td><span class="num" th:text="${priceTotal+'.00'}">1299.00</span><span
+                                                th:name="ordercount" id="ordercount"></span>元
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>运费：</th>
@@ -143,7 +148,8 @@
                                         <th class="total">应付金额：</th>
                                         <td class="total">
                                             <span style="display:none" id="prices" th:text="${priceTotal}"></span>
-                                            <span class="num" id="ordernums" th:text="${priceTotal+'.00'}">1299.00</span>元
+                                            <span class="num" id="ordernums"
+                                                  th:text="${priceTotal+'.00'}">1299.00</span>元
                                         </td>
                                     </tr>
                                     </tbody>
@@ -197,11 +203,11 @@
 <script th:src="@{/mall/js/bootstrap3.js}"></script>
 
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.11.0/dist/bootstrap-table.min.css">
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.11.0/dist/bootstrap-table.min.js"></script>
 <!-- Latest compiled and minified Locales -->
-<script src="https://unpkg.com/bootstrap-table@1.18.2/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.11.0/dist/locale/bootstrap-table-zh-CN.min.js"></script>
 
 <script type="text/javascript">
     var ssrcConflictEvent = 0;
@@ -355,6 +361,7 @@
                     address: ''
                 }
             });
+            $table.bootstrapTable('checkAll');
         });
 
         $table.bootstrapTable({
@@ -377,7 +384,7 @@
                 title: '收货地址',
                 align: 'left'
             },],
-            formatNoMatches:function(){
+            formatNoMatches: function () {
                 return "请先导入或添加收货信息吧~";
             },
             /**
@@ -447,6 +454,33 @@
                     });
                 }
             }
+        });
+
+        document.addEventListener('paste', function (event) {
+            if (event.target.isContentEditable) {
+                return false;
+            }
+
+            let text = (event.clipboardData || window.clipboardData).getData('text');
+            text = text.replace(/<\/?.+?>/g,";");
+            text = text.replace(/[\r\n]/g, ";");
+            text = text.replace(/，/g, ",");
+            // 以转行符切割文本字符串
+            let arrText = text.split(';');
+            arrText.forEach((item, index) => {
+                if (item) {
+                    let address = item.split(',');
+                    $table.bootstrapTable('insertRow', {
+                        index: 0,
+                        row: {
+                            name: address[0] || '',
+                            phone: address[1] || '',
+                            address: address[2] || ''
+                        }
+                    });
+                }
+            });
+            $table.bootstrapTable('checkAll');
         });
     });
 </script>

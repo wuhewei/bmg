@@ -225,6 +225,18 @@
     color: #1baeae;
 }
 
+#content #banner .img {
+    clear: both;
+    width: 998px;
+    height: 100%;
+}
+
+#content #banner .img img{
+    clear: both;
+    width: 100%;
+    height: 100%;
+}
+
 #content #banner .swiper-container {
     width: 998px;
     height: 100%;
@@ -290,6 +302,10 @@
     flex-shrink: 0;
     height: 398px;
     margin-top: 20px;
+}
+
+#content #flash > img {
+    height: 75px;
 }
 
 #content #flash > h2 {
@@ -400,6 +416,10 @@
     height: 730px;
     margin-top: 20px;
     background-color: #f5f5f5;
+}
+
+#content #recommend > img {
+    height: 75px;
 }
 
 #content #recommend > h2 {

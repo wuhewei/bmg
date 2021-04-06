@@ -9,6 +9,8 @@ import java.util.List;
 public interface bmgShoppingCartItemMapper {
     int deleteByPrimaryKey(Long cartItemId);
 
+    int deleteAllByUserId(Long userId);
+
     int insert(bmgShoppingCartItem record);
 
     int insertSelective(bmgShoppingCartItem record);

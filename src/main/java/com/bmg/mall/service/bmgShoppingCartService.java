@@ -40,6 +40,14 @@ public interface bmgShoppingCartService {
     Boolean deleteById(Long bmgShoppingCartItemId);
 
     /**
+     * 删除购物车中的商品
+     *
+     * @param userId
+     * @return
+     */
+    Boolean deleteAllByUserId(Long userId);
+
+    /**
      * 获取我的购物车中的列表数据
      *
      * @param bmgUserId

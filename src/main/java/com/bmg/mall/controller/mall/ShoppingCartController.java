@@ -55,8 +55,9 @@ public class ShoppingCartController {
     public Result savebmgShoppingCartItem(@RequestBody bmgShoppingCartItem bmgShoppingCartItem,
                                           HttpSession httpSession) {
         bmgUserVO user = (bmgUserVO) httpSession.getAttribute(Constants.MALL_USER_SESSION_KEY);
-        bmgShoppingCartItem.setUserId(user.getUserId());
+        bmgShoppingCartService.deleteAllByUserId(user.getUserId());
         //todo 判断数量
+        bmgShoppingCartItem.setUserId(user.getUserId());
         String saveResult = bmgShoppingCartService.savebmgCartItem(bmgShoppingCartItem);
         //添加成功
         if (ServiceResultEnum.SUCCESS.getResult().equals(saveResult)) {
