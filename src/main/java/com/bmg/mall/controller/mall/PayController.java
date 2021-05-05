@@ -103,7 +103,7 @@ public class PayController {
         //付款金额，必填
         int total_amount = WIDtotal_amount;
         //订单名称，必填
-        String subject = new String("GOGOGO商城充值");
+        String subject = new String("余额充值");
         //商品描述，可空
         String body = WIDbody;
 

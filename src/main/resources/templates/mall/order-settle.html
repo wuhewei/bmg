@@ -93,8 +93,8 @@
                                     <tbody>
                                     <tr>
                                         <select class="user_address_kuaidi">
-                                            <option value="YD">韵达快递</option>
                                             <option value="YZ">邮政快递</option>
+                                            <option value="YD">韵达快递</option>
                                         </select>
                                     </tr>
                                     </tbody>
@@ -469,15 +469,30 @@
             let arrText = text.split(';');
             arrText.forEach((item, index) => {
                 if (item) {
-                    let address = item.split(',');
-                    $table.bootstrapTable('insertRow', {
-                        index: 0,
-                        row: {
-                            name: address[0] || '',
-                            phone: address[1] || '',
-                            address: address[2] || ''
-                        }
-                    });
+                    if (item.indexOf(',') !== -1) {
+                        let address = item.split(',');
+                        $table.bootstrapTable('insertRow', {
+                            index: 0,
+                            row: {
+                                name: address[0] && address[0].replace(/\s+/g, '') || '',
+                                phone: address[1] && address[1].replace(/\s+/g, '') || '',
+                                address: address[2] && address[2].replace(/\s+/g, '') || ''
+                            }
+                        });
+                    } else if (item.indexOf(' ') !== -1) {
+                        let address = item.split(' ');
+                        $table.bootstrapTable('insertRow', {
+                            index: 0,
+                            row: {
+                                name: address[0] || '',
+                                phone: address[1] && address[1].match(/\d+/g).join('') || '',
+                                address: (address[1] && address[1].replace(/\d+/g, '') || '')
+                                    .concat(address[2] || '')
+                                    .concat(address[3] || '')
+                                    .concat(address[4] && address[4].replace(/\d{6}/g, '') || '')
+                            }
+                        });
+                    }
                 }
             });
             $table.bootstrapTable('checkAll');

@@ -146,7 +146,7 @@ public class PersonalController {
             Map<String,String> map = KdGoldAPIDemo.addressResolution(addressDeail);
             KdGoldAPIDemo kdGoldAPIDemo = new KdGoldAPIDemo();
 
-            if(kdGoldAPIDemo.isNull(map.get("province")) || kdGoldAPIDemo.isNull(map.get("city")) || kdGoldAPIDemo.isNull(map.get("county"))  || kdGoldAPIDemo.isNull(map.get("village")) ){
+            if(kdGoldAPIDemo.isNull(map.get("province")) || kdGoldAPIDemo.isNull(map.get("city")) || kdGoldAPIDemo.isNull(map.get("county")) ){
                 Result result = ResultGenerator.genFailResult(erro+"的详细地址填写错误,请检查后校验");
                 return result;
             }

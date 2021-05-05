@@ -244,8 +244,9 @@ public class KdGoldAPIDemo {
 
 	public static void main(String[] args) throws Exception {
 //		System.out.println(addressResolution("浙江省杭州市余杭区文一西路亲橙里20栋1025"));
-//		Map<String,String> xxx = addressResolution("浙江省杭州市余杭区文一西路亲橙里20栋1025");
-//		System.out.println(xxx.get("province"));
+		Map<String,String> xxx = addressResolution("山西省大同市浑源县蔡村镇高山小区");
+		System.out.println(xxx);
+		System.out.println(xxx.get("province"));
 //		System.out.println(new KdGoldAPIDemo().orderOnlineByJson());
 	}
 
